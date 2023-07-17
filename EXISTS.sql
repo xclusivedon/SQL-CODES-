@@ -1,17 +1,17 @@
 --Exercise 1
-/* Select all records from the Purchasing.PurchaseOrderHeader table such that there is at least one item in the order with an order quantity greater than 500 */
+-- Select all records from the Purchasing.PurchaseOrderHeader table such that there is at least one item in the order with an order quantity greater than 500 
 
 SELECT PurchaseOrderID,
-		OrderDate,
-		SubTotal,
-		TaxAmt
+	OrderDate,
+	SubTotal,
+	TaxAmt
 FROM AdventureWorks2022.Purchasing.PurchaseOrderHeader A
 WHERE EXISTS (
 				SELECT 
 				1
 				FROM AdventureWorks2022.Purchasing.PurchaseOrderDetail B
 				WHERE A.PurchaseOrderID = B.PurchaseOrderID AND OrderQty > 500
-			 )
+	    )
 
 ORDER BY PurchaseOrderID
 
@@ -28,16 +28,11 @@ WHERE EXISTS (
 				1
 				FROM AdventureWorks2022.Purchasing.PurchaseOrderDetail B
 				WHERE A.PurchaseOrderID = B.PurchaseOrderID AND OrderQty > 500 AND UnitPrice > 50
-			 )
+	     )
 
 ORDER BY PurchaseOrderID
 
-
-
-				
-
-
-
+	
 
 --Exercise 3
 /* Select all records from the Purchasing.PurchaseOrderHeader table such that NONE of the items within the order have a rejected quantity greater than 0 */
@@ -49,7 +44,7 @@ WHERE NOT EXISTS (
 				1
 				FROM AdventureWorks2022.Purchasing.PurchaseOrderDetail B
 				WHERE A.PurchaseOrderID = B.PurchaseOrderID AND RejectedQty > 0
-			 )
+	         )
 
 ORDER BY PurchaseOrderID
 
