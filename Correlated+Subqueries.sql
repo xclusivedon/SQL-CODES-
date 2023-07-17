@@ -11,7 +11,7 @@ SELECT PurchaseOrderID,
 							FROM Purchasing.PurchaseOrderDetail B
 							WHERE A.PurchaseOrderID = B.PurchaseOrderID 
 							AND RejectedQty = 0
-						   )
+				    )
 FROM AdventureWorks2022.Purchasing.PurchaseOrderHeader A
 
 
@@ -28,13 +28,13 @@ SELECT PurchaseOrderID,
 							FROM Purchasing.PurchaseOrderDetail B
 							WHERE A.PurchaseOrderID = B.PurchaseOrderID 
 							AND RejectedQty = 0
-						   ),
+				   ),
 		MostExpensiveItem = (
 								SELECT MAX(UnitPrice) 
 								FROM Purchasing.PurchaseOrderDetail B
 								WHERE A.PurchaseOrderID = B.PurchaseOrderID 
 								
-							)
+				    )
 FROM AdventureWorks2022.Purchasing.PurchaseOrderHeader A
 
 
