@@ -4,7 +4,7 @@
 --Create a query with the following columns:
 
 
-SELECT A.PurchaseOrderID,
+SELECT     A.PurchaseOrderID,
 	   A.OrderDate,
 	   A.TotalDue,
 	   B.Name AS "VendorName"
@@ -21,7 +21,7 @@ WHERE  YEAR(A.OrderDate) >= 2013 AND A.TotalDue > 500
 
 --Exercise 2
 /*Adding a derived column called "PrevOrderFromVendorAmt", 
-that returns the ìpreviousî TotalDue value (relative to the current row) within the group of all orders with the same vendor ID. */
+that returns the ‚Äúprevious‚Äù TotalDue value (relative to the current row) within the group of all orders with the same vendor ID. */
 
 SELECT A.PurchaseOrderID,
 	   A.OrderDate,
@@ -39,9 +39,9 @@ WHERE  YEAR(A.OrderDate) >= 2013 AND A.TotalDue > 500
 
 --Exercise 3
 /* Adding a derived column called "NextOrderByEmployeeVendor", 
-that returns the ìnextî vendor name (the ìnameî field from Purchasing.Vendor) within the group of all orders that have the same EmployeeID value. */
+that returns the ‚Äúnext‚Äù vendor name (the ‚Äúname‚Äù field from Purchasing.Vendor) within the group of all orders that have the same EmployeeID value. */
 
-SELECT A.PurchaseOrderID,
+SELECT     A.PurchaseOrderID,
 	   A.OrderDate,
 	   A.TotalDue,
 	   [PrevOrderFromVendorAmt] = LAG(A.TotalDue,1) OVER(PARTITION BY  A.VendorID ORDER BY A.OrderDate),
@@ -58,9 +58,9 @@ WHERE  YEAR(A.OrderDate) >= 2013 AND A.TotalDue > 500
 
 --Exercise 4
 /* Adding a derived column called "Next2OrderByEmployeeVendor" 
-that returns, within the group of all orders that have the same EmployeeID, the vendor name offset TWO orders into the ìfutureî relative to the order in the current row */
+that returns, within the group of all orders that have the same EmployeeID, the vendor name offset TWO orders into the ‚Äúfuture‚Äù relative to the order in the current row */
 
-SELECT A.PurchaseOrderID,
+SELECT     A.PurchaseOrderID,
 	   A.OrderDate,
 	   A.TotalDue,
 	   [PrevOrderFromVendorAmt] = LAG(A.TotalDue,1) OVER(PARTITION BY  A.VendorID ORDER BY A.OrderDate),
