@@ -4,7 +4,7 @@
 --Exercise 1
 --Perform inner join on three tables "Production.Product table", "Production. ProductSubcategory table" and "Production.ProductCategory table"
 
-SELECT A.Name AS "ProductName",
+SELECT 	   A.Name AS "ProductName",
 	   A.ListPrice,
 	   B.Name AS ProductSubCategory,
 	   C.Name AS ProductCategory
@@ -18,7 +18,8 @@ FROM AdventureWorks2022.Production.Product AS A
 
 --Exercise 2
 --adding a derived column called "AvgPriceByCategory" that returns the average ListPrice for the product category in each given row.
-SELECT A.Name AS ProductName,
+	
+SELECT 	   A.Name AS ProductName,
 	   A.ListPrice,
 	   B.Name AS ProductSubCategory,
 	   C.Name AS ProductCategory,
@@ -35,7 +36,7 @@ FROM AdventureWorks2022.Production.Product AS A
 --Exercise 3
 --adding a derived column called "AvgPriceByCategoryAndSubcategory" that returns the average ListPrice for the product category AND subcategory in each given row.
 
-SELECT A.Name AS ProductName,
+SELECT     A.Name AS ProductName,
 	   A.ListPrice,
 	   B.Name AS ProductSubCategory,
 	   C.Name AS ProductCategory,
@@ -52,7 +53,8 @@ FROM AdventureWorks2022.Production.Product AS A
 
 --Exercise 4
 --adding a derived column called "AvgPriceByCategory" that returns the average ListPrice for the product category in each given row.
-SELECT A.Name AS ProductName,
+	
+SELECT     A.Name AS ProductName,
 	   A.ListPrice,
 	   B.Name AS ProductSubCategory,
 	   C.Name AS ProductCategory,
