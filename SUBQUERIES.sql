@@ -3,18 +3,19 @@
 
 SELECT *
 
-FROM  (
-		 SELECT PurchaseOrderID,
-		   VendorID,
-		   OrderDate,
-		   TaxAmt,
-		   Freight,
-		   TotalDue,
-		   [Top3ordersPerVendor] = ROW_NUMBER() OVER(PARTITION BY VendorID ORDER BY TotalDue DESC)
+FROM  
+	(
+		SELECT  PurchaseOrderID,
+			VendorID,
+		  	OrderDate,
+		   	TaxAmt,
+		   	Freight,
+		   	TotalDue,
+		   	[Top3ordersPerVendor] = ROW_NUMBER() OVER(PARTITION BY VendorID ORDER BY TotalDue DESC)
 
 			FROM AdventureWorks2022.Purchasing.PurchaseOrderHeader
 
-		) AS V
+	) AS V
 
 WHERE [Top3ordersPerVendor] <= 3
 
@@ -30,15 +31,15 @@ SELECT *
 
 FROM
 
-(SELECT PurchaseOrderID,
-	   VendorID,
-	   OrderDate,
-	   TaxAmt,
-	   Freight,
-	   TotalDue,
-	   [Top3ordersPerVendor] = DENSE_RANK() OVER(PARTITION BY VendorID ORDER BY TotalDue DESC)
-
-
-FROM AdventureWorks2022.Purchasing.PurchaseOrderHeader) AS V
+	(	SELECT PurchaseOrderID,
+	   		VendorID,
+	   		OrderDate,
+	   		TaxAmt,
+	   		Freight,
+	   		TotalDue,
+	   		[Top3ordersPerVendor] = DENSE_RANK() OVER(PARTITION BY VendorID ORDER BY TotalDue DESC)
+           
+		FROM AdventureWorks2022.Purchasing.PurchaseOrderHeader
+	) AS V
 
 WHERE [Top3ordersPerVendor] <= 3
