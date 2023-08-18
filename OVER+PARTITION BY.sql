@@ -1,7 +1,7 @@
 --Window Functions With OVER and PARTITION BY
 
 
---Exercise 1
+-- 1
 --Perform inner join on three tables "Production.Product table", "Production. ProductSubcategory table" and "Production.ProductCategory table"
 
 SELECT 	   A.Name AS "ProductName",
@@ -16,7 +16,7 @@ FROM AdventureWorks2022.Production.Product AS A
 		ON B.ProductCategoryID = C.ProductCategoryID
 
 
---Exercise 2
+-- 2
 --adding a derived column called "AvgPriceByCategory" that returns the average ListPrice for the product category in each given row.
 	
 SELECT 	   A.Name AS ProductName,
@@ -33,7 +33,7 @@ FROM AdventureWorks2022.Production.Product AS A
 --ORDER BY C.Name DESC
 
 
---Exercise 3
+--3
 --adding a derived column called "AvgPriceByCategoryAndSubcategory" that returns the average ListPrice for the product category AND subcategory in each given row.
 
 SELECT     A.Name AS ProductName,
@@ -51,7 +51,7 @@ FROM AdventureWorks2022.Production.Product AS A
 --ORDER BY B.Name,C.Name DESC
 
 
---Exercise 4
+-- 4
 --adding a derived column called "AvgPriceByCategory" that returns the average ListPrice for the product category in each given row.
 	
 SELECT     A.Name AS ProductName,
